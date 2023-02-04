@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // js omit new operator
+        let o = Object();
+        let o2 = new Object();
+
+        // field name with spec char
+        o.name = "name";
+        o["hello there"] = "there!";
+
+        // check existance with in operator
+        console.log("name" in o);
+
+        // es6
+        for(let prop in o){
+            console.log(prop);
+        }
+
+        var a = "thermal";
+        console.log(window.a);
+
+        class Shibito{
+            #name;
+            #type;
+            constructor(name){
+                this.#name = name;
+            }
+            grunt(){
+                console.log(`I'm %s`,this.#name);
+            }
+            alarm(){
+                console.log("what's that sound");
+            }
+            get type(){
+                return this.#type;
+            }
+            set type(type){
+                this.#type = type;
+            }
+        }
+        let s = new Shibito("Sol");
+        s.grunt();
+        s.alarm();
+    </script>
+</body>
+</html>

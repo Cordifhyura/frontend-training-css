@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let p = new Promise((resolve, reject) => {
+        console.log('first');
+        setTimeout(resolve, 5000);
+    });
+    //after resolved
+    p.then(() => {setTimeout(console.log('second'), 1000);})
+    .then(() => {setTimeout(console.log('third'), 1000);})
+    .then(() => {setTimeout(console.log('fourth'), 1000);});
+
+    let p1 = new Promise((resolve, reject) => {
+        console.log('p1 executor');
+        setTimeout(resolve, 5000);
+    });
+    //after p1 resolved onResolved() (which is () => new Promise()) is executed
+    //resolve() of p1.then = resolve() of new Promise()
+    //executor of new Promise() is executed, then new Promise() and p1.then() are both resolved after 1s
+    p1.then(() => new Promise((resolve, reject) => {
+        console.log('p2 executor');
+        setTimeout(resolve, 1000);
+    }))
+    .then(() => new Promise((resolve, reject) => {
+        console.log('p3 executor');
+        setTimeout(resolve, 1000);
+    }))
+    .then(() => new Promise((resolve, reject) => {
+        console.log('p4 executor');
+        setTimeout(resolve, 1000);
+    }));
+    //p1.then(),p1.then().then(),p1.then().then().then() are initialized in sync queue(almost the same time), but the execution of onResolved() for each promise would waiting for previous one to be resolved(which means new Promise() is resolved because they share the very same resolve() function)
+
+    function sleep(delay) {
+        return new Promise((resolve) => setTimeout(resolve, delay));
+    }
+    async function sleepTest() {        const t0 = Date.now();
+        console.log(await "wake up");
+        await sleep(3000);
+        console.log(Date.now() - t0);
+    }
+    sleepTest();
+    console.log("if I could wake up faster");
+    </script>
+</body>
+</html>

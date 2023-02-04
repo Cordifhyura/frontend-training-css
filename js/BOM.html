@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log(navigator.userAgent);
+        console.log(location.href);
+        /* alert("assign to hololive in 2s");
+        setTimeout(() => {
+            location.assign("http://hololive.tv");
+        }, 2000);
+        alert("replace to homolive in 2s");
+        setTimeout(() => {
+            location.replace("http://homolive.tv");
+        }, 2000); */
+        //未授权代码无法清除会话历史（session History），也不能禁用回退/前进功能。最快捷的可用方式是使用location.replace()方法，提供指定的 URL 来替换当前的会话历史（session history）
+
+        console.log(history);
+        history.back();
+/*         const state = { 'page_id': 1, 'user_id': 1 }
+        const title = ''
+        const url = 'DOM.html';
+        history.pushState(state,title,url);
+        history.back(); */
+        //url必须在同一个域里，不然会报错（有安全问题）
+        //HTML5 引入了 history.pushState() 和 history.replaceState() 方法，它们分别可以添加和修改历史记录条目。
+        
+
+        console.log(
+            screen.height,
+            screen.availHeight
+            );
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #box{
+            position: relative;
+            left: 20px;
+        }
+
+        #a1{
+            text-transform: capitalize;
+        }
+
+        #content{
+            width: 200px;
+            height: 100px;
+            margin: 30px;
+            padding: 40px;
+            border: 10px solid #666;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="c1 c2">
+        <div id="content"></div>
+        <span id="a1">test</span>
+        <span id="a2"></span>
+        <a href="" id="aa"></a>
+    </div>
+    <script>
+        const box = document.getElementById("box");
+        let spans = box.getElementsByTagName("span");
+        console.log(spans);
+        spans = box.children;
+        console.log(spans);
+
+        // clone element
+        const p1 = document.createElement("p");
+        p1.innerText = "test";
+        box.appendChild(p1);
+        const p2 = document.createElement("p");
+        p2.innerText = "test2";
+        p1.replaceWith(p2);
+        console.log(box.outerHTML);
+
+        const a1 = document.getElementById("a1");
+        console.log(a1.innerText);
+        console.log(a1.textContent);
+
+        //get element size/offset
+        const content = document.getElementById("content");
+        console.log(
+            content.clientLeft, //10(border)
+            content.clientWidth, //280(content+padding*2)
+            //Element.clientWidth（内部宽度） 对于内联元素以及没有 CSS 样式的元素为 0；否则，它是元素内部的宽度
+            content.offsetLeft, //30(margin)
+            content.offsetWidth //300(content+padding*2+border*2)   
+            //offsetWidth（布局宽度） 是测量包含元素的边框 (border)、水平线上的内边距 (padding)、竖直方向滚动条 (scrollbar)（如果存在的话）、以及 CSS 设置的宽度 (width) 的值。
+        );
+        content.addEventListener("click",(event)=>{
+            console.log(
+                event.clientX, //MouseEvent.clientX 是只读属性，它提供事件发生时的应用客户端区域的水平坐标 (与页面坐标不同)。
+                event.offsetX, //offsetX 规定了事件对象与目标节点的内填充边（padding edge）在 X 轴方向上的偏移量。（只看内容）
+                event.pageX,
+                event.screenX,
+                event.x //MouseEvent.x 是 MouseEvent.clientX 属性的别名。
+            );
+        })
+
+        //computed style
+        console.log(getComputedStyle(content));
+        //Window.getComputedStyle()方法返回一个对象，该对象在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值
+        console.log(content.style);
+        //从getComputedStyle返回的对象是只读的，可以用于检查元素的样式（包括由一个<style>元素或一个外部样式表设置的那些样式）。elt.style对象应用于在特定元素上设置样式。
+
+        // classList
+        box.classList.toggle("c2");
+        console.log(box.classList);
+        box.classList.toggle("c2");
+        console.log(box.classList);
+    </script>
+</body>
+</html>

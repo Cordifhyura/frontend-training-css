@@ -1,0 +1,115 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html,body{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.main-header{
+    flex: 0 1 auto;
+    /* The value 0 1 auto can be read as, “I do not want to grow any larger; I will shrink as needed; please calculate my size for me.” */
+}
+
+.header-text{
+    background-color: aquamarine ;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.main-content{
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    /* gap: 40px; */
+}
+
+.thumbnail-title{
+    display: block;
+    padding: 4px 10px;
+    background-color: aquamarine ;
+    text-align: center;
+}
+
+.thumbnail-list{
+    display: flex;
+    justify-content: space-between;
+    flex: 0 1 auto;
+    order: 2;
+    /* The order property can be assigned any integer value. The default value is 0, which tells the browser to use the source order. Any other values, including negative numbers, tell the browser to draw a flex item before or after other flex items. */
+    white-space: nowrap;
+    overflow: auto hidden;
+    /* overflow: hidden; */
+    list-style: none;
+}
+
+.thumbnail-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* display: inline-block; */
+    /* width: 120px; */
+    max-width: 100px;
+    /* height: 200px; */
+    /* max-height: 300px; */
+    background-color: deepskyblue;
+}
+
+/* 通用兄弟选择器匹配属于指定元素的同级元素的所有元素。 */
+/* .thumbnail-item ~ .thumbnail-item{
+    margin-top: 10px;
+    div + p	选择所有紧随 <div> 元素之后的 <p> 元素。
+    p ~ ul	选择前面有 <p> 元素的每个 <ul> 元素。
+} */
+
+.thumbnail-image{
+    /* flex: 0 1 auto; */
+    /* width: 100%; */
+    /* height: 100%; */
+}
+
+/* 文字脱标了，flex计算会忽略文字大小 */
+.thumbnail-title{
+    /* flex: 0 1 auto; */
+    /* position: absolute;
+    bottom: 0; */
+}
+
+.detail-image-container{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    /* main axis */
+    align-items: center;
+    /* cross axis */
+    padding: 20px;
+}
+
+/* While you could center the .detail-image itself inside the .detail-image-container, it would be difficult to correctly offset the .detail-image-title, because both the .detail-image and the .detail-image-container are dynamically resizing. */
+.detail-image-frame{
+    position: relative;
+    /* You used position: relative for .detail-image-frame because you want it to remain in normal flow. You also want it to serve as the container for an absolutely positioned descendant, so its position property must be explicitly defined. */
+    text-align: center;
+    /* inline */
+}
+
+.detail-image{
+    width: 90%;
+}
+
+.detail-image-title{
+    position: absolute;
+    bottom: -16px;
+    left: 4px;
+    color: cyan;
+    font-size: 40px;
+    text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+}
