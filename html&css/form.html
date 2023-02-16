@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 50%;
+            width: 50%;
+        }
+        ul {
+            list-style-type: none;
+            line-height: 2em;
+        }
+        .bottom {
+            margin: 1em 0;
+        }
+    </style>
+</head>
+<body>
+    <img src="./img/5cPEfgPb7242X6gUG6GAPG.jpg" alt="">
+    <p>2010年一支由中国香港和土耳其组成的探险队宣布，他们在土耳其东部的亚拉腊山海拔超过4000米的地方发现了诺亚方舟遗迹，并成功进入巨型木结构的方舟内，探险队员还在方舟内发现了陶器、绳索以及类似种子的物体。</p>
+    <form action="">
+        <fieldset name="basic">
+            <legend>A Farm</legend>
+            <ul>
+                <li>
+                    <label for="name">name</label>
+                    <input type="text" name="name" id="name" required>
+                </li>
+                <li>
+                    <label for="password">password</label>
+                    <input type="text" name="password" id="password" required minlength="3">
+                </li>
+                <li>
+                    <label for="task">task</label>
+                    <input type="checkbox" name="task" id="task" value="building" checked>building
+                    <input type="checkbox" name="task" id="task" value="breeding" checked>breeding
+                    <input type="checkbox" name="task" id="task" value="herding">herding
+                    <input type="checkbox" name="task" id="task" value="farming">farming
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset name="boat">
+            <legend>Boat Info</legend>
+            <ul>
+                <li>
+                    <label for="length">length</label>
+                    <input type="number" id="length" value="300" min="1" max="300">
+                </li>
+                <li>
+                    <label for="width">width</label>
+                    <input type="number" id="width" value="300" min="1" max="300">
+                </li>
+                <li>
+                    <label for="height">height</label>
+                    <input type="number" id="height" value="50" min="1" max="50">
+                </li>
+                <li>
+                    <label for="layer">layer</label>
+                    <input type="number" id="layer" value="2" min="1">
+                </li>
+                <li>
+                    <label for="pick">pick</label>
+                    <input type="radio" name="pick" id="pick" value="home member">home member
+                    <input type="radio" name="pick" id="pick" value="others" checked>others
+                </li>
+                <li>
+                    <label for="stock_clean">clean stock</label>
+                    <select name="stock_clean" id="stock_clean">
+                        <option value="male pair">male pair</option>
+                        <option value="female pair">female pair</option>
+                        <option value="couple" selected>couple</option>
+                    </select>
+                    <label for="stock_unclean">tainted stock</label>
+                    <select name="stock_unclean" id="stock_unclean">
+                        <option value="male pair">male pair</option>
+                        <option value="female pair">female pair</option>
+                        <option value="couple">couple</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="food">food</label>
+                    <input type="radio" name="food" id="food" value="30days" checked>home member
+                    <input type="radio" name="food" id="food" value="7days">others
+                </li>
+            </ul>
+        </fieldset>
+        <div id="bottom">
+            <input type="file" class="bottom" name="upload" id="upload" style="display: block;">
+            <input type="date" class="bottom" name="date" id="date" style="display: block;">
+        </div>
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </form>
+</body>
+</html>

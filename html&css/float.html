@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float</title>
+    <style>
+        nav{
+            width: 50%;
+            margin: auto auto;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+        .clearfix::after,
+        .clearfix::before{
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        .tag{
+            float: left;
+            width: 25%;
+            margin: 0 auto;
+            height: 48px;
+            font: bold 16px arial,sans-serif;
+            line-height: 48px;
+        }
+        .tag:hover{
+            border-bottom: 3px solid #45b985;
+        }
+        a{
+            text-decoration: none;
+            color: #666666;
+        }
+        a:hover{
+            color:#45b985
+        }
+    </style>
+</head>
+<body>
+    <nav class="clearfix">
+        <div class="tag">
+            <a href="#">uni-app</a>
+        </div>
+        <div class="tag">
+            <a href="#">uniCloud</a>
+        </div>
+        <div class="tag">
+            <a href="#">HBuilder</a>
+        </div>
+        <div class="tag">
+            <a href="#">uni-sdk</a>
+        </div>
+    </nav>
+</body>
+</html>
