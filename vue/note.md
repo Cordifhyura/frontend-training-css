@@ -113,5 +113,78 @@ export default {
     focus
   }
 }
+```
+
+# Event Handling
+## Event Modifiers
+- stop
+- prevent
+- self
+- capture
+- once
+- passive
+The .passive modifier is typically used with touch event listeners for improving performance on mobile devices.
+
+# Template Refs
+If a `ref` attribute is added to an HTML element in your Vue template, you’ll then be able to reference that element or even a child element in your Vue instance. 
+You can also access the DOM element directly; it is a read-only attribute and returns an object.
+It allows us to obtain a direct reference to a specific DOM element or child component instance after it's mounted. This may be useful when you want to
+The use of JavaScript’s `getElementById` is not encouraged in Vue, as it creates performance issues. 
+Vue’s `ref` helps you “reference” DOM elements in a more efficient way.
+
+# Components Basics
+## Props
+**parent -> child**
+Props are custom attributes you can register on a component. To pass a title to our blog post component, we must declare it in the list of props this component accepts, using the `props` option
+When a value is passed to a prop attribute, it becomes a property on that component instance. The value of that property is accessible within the template and on the component's `this` context, just like any other component property.
+
+## Emits
+**child -> parent**
+
+The parent can choose to listen to any event on the child component instance with v-on or @, just as we would with a native DOM event:
+
+```html
+<BlogPost
+  ...
+  @enlarge-text="postFontSize += 0.1"
+ />
+ ```
+Then the child component can emit an event on itself by calling the built-in $emit method, passing the name of the event:
 
 
+```html
+<template>
+  <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="$emit('enlarge-text')">Enlarge text</button>
+  </div>
+</template>
+```
+Thanks to the @enlarge-text="postFontSize += 0.1" listener, the parent will receive the event and update the value of postFontSize.
+
+## Slots
+**parent -> child**
+
+Starting off with slots is a typical use case in which we simply declare a slot in the child component and inject content using the parent component.
+Let’s check it out. First, let’s setup a parent component called MyContainer.vue
+
+```html
+<template>
+    <div>
+        <my-button>Click Me!</my-button>
+    </div>
+</template>
+```
+Next, let’s setup a child component MyButton.vue component.
+```html
+<template>
+   <div>
+     <slot></slot>
+   </div>
+</template>
+```
+When, MyButton.vue renders, the `<slot>` will be replaced by Click Me! — the content from the parent.
+You can pass any sort of template from the parent component, it doesn’t have to be just text. It can be a Font Awesome icon, image, or even another component.
+
+## Scoped CSS
+When a `<style>` tag has the `scoped` attribute, its CSS will apply to elements of the current component only.
