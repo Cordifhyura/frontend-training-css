@@ -1,3 +1,8 @@
+# Setup
+- When using Vue from a CDN, there is no "build step" involved. This makes the setup a lot simpler, and is suitable for enhancing static HTML or integrating with a backend framework. However, you **won't be able to use the Single-File Component (SFC) syntax**.
+- we may need to split our code into separate JavaScript files so that they are easier to manage.
+If you directly open the above index.html in your browser, you will find that it throws an error because ES modules cannot work over the file:// protocol. In order for this to work, you need to serve your index.html over the http:// protocol, **with a local HTTP server**.
+
 # MVVM
 - Model
 - View
@@ -133,6 +138,19 @@ The use of JavaScript’s `getElementById` is not encouraged in Vue, as it creat
 Vue’s `ref` helps you “reference” DOM elements in a more efficient way.
 
 # Components Basics
+
+## Component communication
+- Since **every component has it’s own isolated scope**, child components can never (and should never) reference data directly from parent components
+- We’ll use `props` to pass data from parent -> child
+- children components can only directly communicate with a parent through **custom events**. Vue’s custom events work by triggering events within a particular component, `$emit(nameOfEvent)`, and listening for that event in another component, $on(nameOfEvent). Data can also be passed through these events.
+- Managing data between sibling components in Vue can be categorized in three main buckets:
+  - Using a **global event bus**
+  - Using a simple, shared store object (for simple state management)
+  - Using the state management library Vuex
+
+## Global Event Bus
+A global event bus builds on top of using Vue’s simple custom events by making events global to the entire application. This is often a simple way of passing information between any components regardless of their relationship (parent-child, child-parent or sibling-sibling).
+It’s important to note, however, a global event bus **is not** often the recommended way of managing data between components
 ## Props
 **parent -> child**
 Props are custom attributes you can register on a component. To pass a title to our blog post component, we must declare it in the list of props this component accepts, using the `props` option
