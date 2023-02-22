@@ -148,9 +148,13 @@ Vue’s `ref` helps you “reference” DOM elements in a more efficient way.
   - Using a simple, shared store object (for simple state management)
   - Using the state management library Vuex
 
-## Global Event Bus
+### Global Event Bus
 A global event bus builds on top of using Vue’s simple custom events by making events global to the entire application. This is often a simple way of passing information between any components regardless of their relationship (parent-child, child-parent or sibling-sibling).
 It’s important to note, however, a global event bus **is not** often the recommended way of managing data between components
+
+### State Management
+State basically means data. State management often refers to the management of application level data.
+
 ## Props
 **parent -> child**
 Props are custom attributes you can register on a component. To pass a title to our blog post component, we must declare it in the list of props this component accepts, using the `props` option
