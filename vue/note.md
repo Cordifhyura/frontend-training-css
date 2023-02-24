@@ -139,6 +139,9 @@ Vue’s `ref` helps you “reference” DOM elements in a more efficient way.
 
 # Components Basics
 
+## Mixins
+混入本身可以看作是一个组件
+
 ## Component communication
 - Since **every component has it’s own isolated scope**, child components can never (and should never) reference data directly from parent components
 - We’ll use `props` to pass data from parent -> child

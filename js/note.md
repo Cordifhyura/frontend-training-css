@@ -147,3 +147,80 @@ await p4;
 setTimeout(console.log, 0, `${Date.now() - t0}ms elapsed`);
 }
 ```
+
+# Storage
+## cookie
+cookie 是与特定域绑定的。设置cookie 后，它会与请求一起发送到创建它的域。这个限制能保证cookie 中存储的信息只对被认可的接收者开放，不被其他域访问。
+
+只要遵守以下大致的限制，就不会在任何浏览器中碰到问题：
+- 不超过300 个cookie；
+- 每个cookie 不超过4096 字节；
+- 每个域不超过20 个cookie；
+- 每个域不超过81 920 字节。
+- 每个域能设置的cookie 总数也是受限的，但不同浏览器的限制不同。
+
+实践中最好将cookie 名当成**区分大小写**来对待，因为一些服务器软件可能这样对待它们。cookie 名必须经过URL 编码。
+
+在JavaScript 中处理cookie 比较麻烦，因为接口过于简单，只有BOM的document.cookie 属性
+
+因为所有cookie 都会作为请求头部由浏览器发送给服务器，所以在cookie 中保存大量信息可能会影响特定域浏览器请求的性能。保存的cookie 越大，请求完成的时间就越长。即使浏览器对cookie 大小有限制，最好还是尽可能只通过cookie 保存必要信息，以避免性能问题。
+## local storage
+sessionStorage 对象只存储会话数据，这意味着数据只会存储到浏览器关闭。这跟浏览器关闭时会消失的会话cookie 类似。存储在sessionStorage 中的数据不受页面刷新影响，可以在浏览器崩溃并重启后恢复。
+存储在localStorage 中的数据会保留到通过JavaScript 删除或者用户清除浏览器缓存。localStorage 数据不受页面刷新影响，也不会因关闭窗口、标签页或重新启动浏览器而丢失。
+## IndexedDB
+IndexedDB 背后的思想是创造一套API，方便JavaScript 对象的存储和获取，同时也支持查询和搜索。
+
+IndexedDB 使用对象存储而不是表格保存数据。IndexedDB 数据库就是在一个公共命名空间下的一组对象存储，类似于NoSQL 风格的实现。
+
+IndexedDB 虽然是网页中的异步API，但仍存在并发问题。如果两个不同的浏览器标签页同时打开了同一个网页，则有可能出现一个网页尝试更新数据库而另一个尚未就绪的情形。
+
+IndexedDB 的很多限制实际上与Web Storage 一样。首先，**IndexedDB 数据库是与页面源（协议、域和端口）绑定的，因此信息不能跨域共享**。这意味着www.wrox.com 和p2p.wrox.com 会对应不同的数据存储。
+
+# Syntax
+## spread operator
+剩余操作符在对象间执行**浅复制**，因此会复制对象的引用而不会克隆整个对象
+
+扩展对象的顺序很重要，主要有两个原因。
+(1) 对象跟踪插入顺序。从扩展对象复制的属性按照它们在对象字面量中列出的顺序插入。
+(2) 对象会覆盖重名属性。在出现重名属性时，会使用后出现属性的值。
+
+## Destructuring assignment
+- you can destructure objects on the left-hand side of the assignment.
+```javascript
+const obj = { a: 1, b: 2 };
+const { a, b } = obj;
+// is equivalent to:
+// const a = obj.a;
+// const b = obj.b;
+```
+- All variables share the same declaration, so if you want some variables to be re-assignable but others to be read-only, you may have to destructure twice — once with let, once with const.
+```javascript
+const obj = { a: 1, b: { c: 2 } };
+const { a } = obj; // a is constant(const a = 1;)
+let {
+  b: { c: d },
+} = obj; // d is re-assignable(let d = 2;)
+```
+- if the number of variables specified on the left-hand side of the assignment is greater than N, only the first N variables are assigned values. The values of the remaining variables will be `undefined`.
+- Swapping variables
+```javascript
+let a = 1;
+let b = 3;
+
+[a, b] = [b, a];
+console.log(a); // 3
+console.log(b); // 1
+```
+- prototype chain
+When deconstructing an object, if a property is not accessed in itself, it will continue to look up along the prototype chain.
+
+## flat
+ECMAScript 2019 在Array.prototype 上增加了两个方法：flat()和flatMap()。这两个方法为打平数组提供了便利。如果没有这两个方法，则打平数组就要使用迭代或递归。
+注意 flat()和flatMap()只能用于打平嵌套数组。嵌套的可迭代对象如Map 和Set不能打平。
+
+# Iterator
+- 循环是迭代机制的基础，这是因为它可以指定迭代的次数，以及每次迭代要执行什么操作。
+- 每次循环都会在下一次迭代开始之前完成，而每次迭代的顺序都是事先定义好的。迭代会在一个有序集合上进行。（“有序”可以理解为集合中**所有项**都可以**按照既定的顺序**被遍历到，特别是**开始和结束项有明确的定义**。)
+- 实现Iterable 接口（可迭代协议）要求同时具备两种能力：支持迭代的自我识别能力和创建实现 Iterator 接口的对象的能力
+- 迭代器维护着一个指向可迭代对象的引用，因此迭代器会**阻止垃圾回收程序回收**可迭代对象。
+- 生成器是ECMAScript 6 新增的一个极为灵活的结构，拥有在一个函数块内**暂停和恢复代码执行**的能力。这种新能力具有深远的影响，比如，使用生成器可以自定义迭代器和实现协程(异步)。
