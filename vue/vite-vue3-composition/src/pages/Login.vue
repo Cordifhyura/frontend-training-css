@@ -36,7 +36,7 @@
 </style> -->
 
 <!-- 在页面中覆盖第三方框架的样式，用scoped标签是无效的，要另起一个全局的style? -->
-<style scoped>
+<style lang="scss" scoped>
     .grey{
         background-color: #ccc;
     }

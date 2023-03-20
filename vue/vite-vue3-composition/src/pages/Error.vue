@@ -1,9 +1,9 @@
 <script setup>
-
+    import Good from '@/components/Good.vue';
 </script>
 
 <template>
-    <p>you know you got it!</p>
+    <Good></Good>
 </template>
 
 <style scoped>

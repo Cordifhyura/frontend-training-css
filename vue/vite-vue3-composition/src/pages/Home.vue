@@ -29,11 +29,12 @@
 </script> -->
 
 <script setup>
+    
     import { ref, computed, onMounted } from 'vue';
     // no need to specify Component structure
-    import Good from '@/pages/Error.vue';
+    import Header from '@/components/header.vue';
+    import Good from '@/components/Good.vue';
 
-    let name = ref();
     let count = ref(0);
     console.log(count.value);
     const wholeCount = computed(
@@ -42,19 +43,22 @@
     const addCount = () => {
       count.value++
     }
-    onMounted(() => {
-      name.value = "come on"
-    });
+    
 </script>
 
 <template>
-  <h1>{{ name }}</h1>
+  <Header></Header>
   <strong>{{ wholeCount }}</strong>
   <p>{{ count }}</p>
   <button @click="addCount">take a little bit of my heart</button>
   <Good></Good>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+
+// deep styling not working
+:deep(p){
+  color: red;
+}
 
 </style>

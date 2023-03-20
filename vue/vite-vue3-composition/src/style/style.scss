@@ -1,6 +1,7 @@
 :root {
   // Mobile adaption
   font-size: 13.33vw; // justify rem with viewport(instead of specific pixels)
+  // 1rem now equals 13.33% viewport width (equals 100px on 720px devices)
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
