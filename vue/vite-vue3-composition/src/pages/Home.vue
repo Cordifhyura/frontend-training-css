@@ -51,13 +51,15 @@
   <strong>{{ wholeCount }}</strong>
   <p>{{ count }}</p>
   <button @click="addCount">take a little bit of my heart</button>
-  <Good></Good>
+  <div id="test">
+    <Good></Good>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 
-// deep styling not working
-:deep(p){
+// deep styling not working for root node
+ :deep(p){
   color: red;
 }
 

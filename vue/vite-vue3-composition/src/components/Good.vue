@@ -8,7 +8,5 @@
 </script>
 
 <style lang="scss" scoped>
-    p{
-        font-size: 0.1rem;
-    }
+
 </style>
