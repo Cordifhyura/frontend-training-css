@@ -1,9 +1,9 @@
 <script setup>
-    import Good from '@/components/Good.vue';
+    import Footer from '@/components/Footer.vue';
 </script>
 
 <template>
-    <Good></Good>
+    <Footer></Footer>
 </template>
 
 <style scoped>

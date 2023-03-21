@@ -1,7 +1,7 @@
 <!-- options api compatibility -->
 <!-- <script>
   import { ref,onMounted,computed } from 'vue';
-  import Good from './components/Good.vue';
+  import Footer from './components/Footer.vue';
   export default {
     setup(){
       let name = ref();
@@ -31,17 +31,20 @@
 <script setup>
     
     import { ref, computed, onMounted } from 'vue';
+    import { useUserStore } from '@/store/store';
     // no need to specify Component structure
     import Header from '@/components/header.vue';
-    import Good from '@/components/Good.vue';
+    import Footer from '@/components/Footer.vue';
 
-    let count = ref(0);
-    console.log(count.value);
+    const userStore = useUserStore();
+    console.log(userStore.count);
+    // not working, just a value copy
+    // let count = userStore.count;
     const wholeCount = computed(
-      () => count.value*1000
+      () => userStore.count*1000
     );
     const addCount = () => {
-      count.value++
+      userStore.count++
     }
     
 </script>
@@ -49,10 +52,10 @@
 <template>
   <Header></Header>
   <strong>{{ wholeCount }}</strong>
-  <p>{{ count }}</p>
+  <p>{{ userStore.count }}</p>
   <button @click="addCount">take a little bit of my heart</button>
   <div id="test">
-    <Good></Good>
+    <Footer></Footer>
   </div>
 </template>
 

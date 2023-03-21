@@ -22,10 +22,24 @@
             Submit
             </van-button>
         </div>
+        <!-- use default event -->
+        <a href="">Cancel</a>
     </van-form>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { login } from '@/pages/login';
+
+    const username = ref("");
+    const password = ref("");
+    const router = useRouter();
+    function onSubmit(){
+        // use value within the same block
+        login(username,password);
+        router.push("/home");
+    }
 
 </script>
 

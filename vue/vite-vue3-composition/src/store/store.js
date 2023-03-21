@@ -1,4 +1,4 @@
 import { defineStore } from 'pinia'
-import userStore from './userStore'
+import userStore from '@/store/userStore'
 
 export const useUserStore = defineStore('userStore', userStore)

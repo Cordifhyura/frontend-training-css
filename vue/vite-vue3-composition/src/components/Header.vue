@@ -1,18 +1,25 @@
 <template>
     <h1>Come on {{ name }}</h1>
-    <a href="">{{ staticUrl }}</a>
+    <a href="">{{ figure }}</a>
     <p>take it!</p>
 </template>
 
 <script setup>
 
-import { ref, computed, onMounted } from 'vue';
-import { staticUrl } from '@/api/api';
+import { computed } from 'vue';
+import { useUserStore } from '@/store/store';
+import apis from '@/api/api';
 
-  let name = ref();
-  onMounted(() => {
-      name.value = "boy"
-    });
+  const userStore = useUserStore();
+  // no log printed, due to browser cache
+  console.log(userStore.name);
+  const name = computed(() => 
+    userStore.name==""?"Guest":userStore.name
+  )
+  const figure = computed(() => 
+  // use .value for computed properties
+    apis.figure+"/"+name.value
+  )
 </script>
 
 <style lang="scss" scoped>
