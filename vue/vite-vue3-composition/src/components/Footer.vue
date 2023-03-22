@@ -7,7 +7,7 @@
 <script setup>
     import { useRouter } from 'vue-router';
     import { useUserStore } from '@/store/store';
-    import { quit } from '@/pages/login';
+    import { quit } from '@/api/userService';
 
     const router = useRouter();
     const store = useUserStore();

@@ -30,7 +30,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { login } from '@/pages/login';
+import { login } from '@/api/userService';
 
     const username = ref("");
     const password = ref("");
