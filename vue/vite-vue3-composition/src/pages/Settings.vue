@@ -1,6 +1,6 @@
 <template>
     <van-space direction="vertical" size="0.2rem">
-        <Nav class="enlarge"></Nav>
+        <Nav class="nav-enlarged"></Nav>
         <div>
             <h2>font size</h2>
             <van-slider v-model="settings.size" :min="1" :max="10" />
@@ -27,7 +27,5 @@
 </script>
 
 <style lang="scss" scoped>
-    .enlarge{
-        width: 5rem;
-    }
+    
 </style>

@@ -10,8 +10,8 @@ import { NavBar } from 'vant';
 
 const store = createPinia();
 createApp(App)
-    .use(router)
     .use(store)
+    .use(router)
     .use(Form)
     .use(Field)
     .use(Cell)

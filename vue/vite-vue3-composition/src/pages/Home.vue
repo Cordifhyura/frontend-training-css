@@ -57,7 +57,7 @@
     <strong>{{ wholeCount }}</strong>
     <p>{{ userStore.count }}</p>
   </div>
-  <van-button type="default" @click="addCount" class="block">take a little bit of my heart</van-button>
+  <van-button class="block" type="default" @click="addCount">take a little bit of my heart</van-button>
   <!-- <button @click="addCount">take a little bit of my heart</button> -->
   <Footer></Footer>
 </van-space>
@@ -68,7 +68,7 @@
   font-size: calc(16px /0.5 * v-bind('settings.size') / 10);
 }
 
-.block{
+.block, :deep(.block){
   display: block;
 }
 
