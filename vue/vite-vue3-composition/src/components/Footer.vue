@@ -3,7 +3,7 @@
     <van-button plain type="primary" v-show="store.isLogin" @click="quit">Logout</van-button>
     <p>you know you got it!</p>
     <!-- v-show not working on vite components -->
-    <van-icon name="setting-o" :size=20 @click="()=>router.push('/settings')" />
+    <van-icon name="setting-o" :size=20 :color="store.isLogin?'#666':'#ddd'" @click="()=>{if(store.isLogin){router.push('/settings')}}" />
 </template>
 
 <script setup>
