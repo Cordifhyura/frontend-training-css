@@ -1,0 +1,12 @@
+* 说一下 http 和 https
+* tcp 三次握手，一句话概括
+* Cookie、sessionStorage、localStorage 的区别
+* 对 HTML 语义化标签的理解
+* click 在 ios 上有 300ms 延迟，原因及如何解决？
+* 介绍知道的 http 返回的状态码
+* 前端优化
+* GET 和 POST 的区别
+* 在地址栏里输入一个 URL,到这个页面呈现出来，中间会发生什么？（完整版）
+* 输入 URL 到页面加载显示完成发生了什么?（精简版）
+* 描述一下 XSS 和 CRSF 攻击？防御方法？
+
