@@ -18,6 +18,10 @@ export function login(username,password){
     userStore.name = username.value;
     userStore.count = 0;
     userStore.isLogin = true;
+    userStore.settings = {
+        colorScheme: 'red' ,
+        size: 5
+    }
 }
 
 export function quit(){
@@ -25,4 +29,8 @@ export function quit(){
     userStore.name = "";
     userStore.count = 0;
     userStore.isLogin = false;
+    userStore.settings = {
+        colorScheme: 'red' ,
+        size: 5
+    }
 }

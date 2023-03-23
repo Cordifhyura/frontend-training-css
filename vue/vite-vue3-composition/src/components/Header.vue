@@ -10,6 +10,7 @@ import { computed } from 'vue';
 import { useUserStore } from '@/store/store';
 import apis from '@/api/api';
 
+
   const userStore = useUserStore();
   // no log printed, due to browser cache
   console.log(userStore.name);
@@ -21,11 +22,3 @@ import apis from '@/api/api';
     apis.figure+"/"+name.value
   )
 </script>
-
-<style lang="scss" scoped>
-// inner sytle not working due to browser cache
-h1{
-  background-color: red;
-}
-
-</style>

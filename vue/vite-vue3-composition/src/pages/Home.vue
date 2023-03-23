@@ -37,6 +37,7 @@
     import Footer from '@/components/Footer.vue';
 
     const userStore = useUserStore();
+    const settings = userStore.settings;
     console.log(userStore.count);
     // not working, just a value copy
     // let count = userStore.count;
@@ -50,20 +51,35 @@
 </script>
 
 <template>
+<van-space direction="vertical" fill>
   <Header></Header>
-  <strong>{{ wholeCount }}</strong>
-  <p>{{ userStore.count }}</p>
-  <button @click="addCount">take a little bit of my heart</button>
-  <div id="test">
-    <Footer></Footer>
+  <div id="counts" class="color-schemed">
+    <strong>{{ wholeCount }}</strong>
+    <p>{{ userStore.count }}</p>
   </div>
+  <van-button type="default" @click="addCount" class="block">take a little bit of my heart</van-button>
+  <!-- <button @click="addCount">take a little bit of my heart</button> -->
+  <Footer></Footer>
+</van-space>
 </template>
 
 <style lang="scss" scoped>
+*{
+  font-size: calc(16px /0.5 * v-bind('settings.size') / 10);
+}
+
+.block{
+  display: block;
+}
 
 // deep styling not working for root node
- :deep(p){
-  color: red;
+ .color-schemed, :deep(p){
+  color: v-bind('settings.colorScheme');
+}
+
+// inner sytle may not working due to browser cache
+ :deep(h1){
+  background-color: v-bind('settings.colorScheme');
 }
 
 </style>

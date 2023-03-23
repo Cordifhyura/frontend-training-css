@@ -1,11 +1,19 @@
-import { ref } from 'vue';
-import { useLocalStorage } from "@vueuse/core"
+import { ref, reactive } from 'vue';
+// refersh-proof
+import { useSessionStorage } from "@vueuse/core"
 
 export default () => {
   return {
-    name: useLocalStorage("name", ref("Guest")),
-    count: useLocalStorage("count", ref(0)),
-    isLogin: useLocalStorage("isLogin", ref(false))
+    name: useSessionStorage("name", ref("Guest")),
+    count: useSessionStorage("count", ref(0)),
+    isLogin: useSessionStorage("isLogin", ref(false)),
+    settings: useSessionStorage(
+      "settings",
+      reactive({ 
+        colorScheme: 'red' ,
+        size: 5
+      })
+    )
   }
 }
 
